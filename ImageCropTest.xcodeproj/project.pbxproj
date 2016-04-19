@@ -14,6 +14,8 @@
 		63EC77381CC60F92008025A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63EC77361CC60F92008025A7 /* LaunchScreen.storyboard */; };
 		63EC77431CC60F92008025A7 /* ImageCropTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77421CC60F92008025A7 /* ImageCropTestTests.swift */; };
 		63EC774E1CC60F92008025A7 /* ImageCropTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC774D1CC60F92008025A7 /* ImageCropTestUITests.swift */; };
+		63EC775C1CC611D4008025A7 /* a.png in Resources */ = {isa = PBXBuildFile; fileRef = 63EC775B1CC611D4008025A7 /* a.png */; };
+		63EC775E1CC61944008025A7 /* a2.png in Resources */ = {isa = PBXBuildFile; fileRef = 63EC775D1CC61944008025A7 /* a2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		63EC77491CC60F92008025A7 /* ImageCropTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImageCropTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63EC774D1CC60F92008025A7 /* ImageCropTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCropTestUITests.swift; sourceTree = "<group>"; };
 		63EC774F1CC60F92008025A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63EC775B1CC611D4008025A7 /* a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = a.png; sourceTree = "<group>"; };
+		63EC775D1CC61944008025A7 /* a2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = a2.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,8 @@
 				63EC77311CC60F92008025A7 /* Main.storyboard */,
 				63EC77341CC60F92008025A7 /* Assets.xcassets */,
 				63EC77361CC60F92008025A7 /* LaunchScreen.storyboard */,
+				63EC775B1CC611D4008025A7 /* a.png */,
+				63EC775D1CC61944008025A7 /* a2.png */,
 				63EC77391CC60F92008025A7 /* Info.plist */,
 			);
 			path = ImageCropTest;
@@ -229,7 +235,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63EC775E1CC61944008025A7 /* a2.png in Resources */,
 				63EC77381CC60F92008025A7 /* LaunchScreen.storyboard in Resources */,
+				63EC775C1CC611D4008025A7 /* a.png in Resources */,
 				63EC77351CC60F92008025A7 /* Assets.xcassets in Resources */,
 				63EC77331CC60F92008025A7 /* Main.storyboard in Resources */,
 			);
