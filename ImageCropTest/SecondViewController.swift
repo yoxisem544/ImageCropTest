@@ -11,12 +11,17 @@ import UIKit
 class SecondViewController: UIViewController {
 	
 	var hey: UIView!
+	var image: UIImage!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-		view.addSubview(hey)
+		let imv = UIImageView()
+		imv.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
+		view.addSubview(imv)
+		imv.image = image
+		imv.backgroundColor = UIColor.lightGrayColor()
 		
 		view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(shit)))
     }

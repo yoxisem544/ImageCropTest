@@ -13,7 +13,7 @@ class ViewController: UIViewController {
 	var scrollView: UIScrollView!
 	var imageView: UIImageView!
 
-	let radius: CGFloat = UIScreen.mainScreen().bounds.width / 2 * 0.8
+	let radius: CGFloat = UIScreen.mainScreen().bounds.width / 2 * 0.4
 	
 	let button = UIButton(type: UIButtonType.System)
 	
@@ -44,7 +44,11 @@ class ViewController: UIViewController {
 		// move to center of the image
 		scrollView.contentOffset = CGPoint(x: (imageView.bounds.size.width - scrollView.bounds.size.width) / 2, y: (imageView.bounds.size.height - scrollView.bounds.size.height) / 2)
 		
-		view.layer.addSublayer(holeLayer(radius))
+//		let hole = holeLayer(radius)
+//		view.layer.addSublayer(hole)
+		let yoyoyoView = Hey(frame: UIScreen.mainScreen().bounds)
+		yoyoyoView.reciever = scrollView
+		view.addSubview(yoyoyoView)
 		
 		titleOnCircle("Move and scale")
 		
@@ -56,16 +60,25 @@ class ViewController: UIViewController {
 	}
 	
 	func fuck() {
+		let image = imageView.image?.CGImage
 		let offset = scrollView.contentOffset
+		let zoomFactor = scrollView.zoomScale
+		let r = CGRect(x: offset.x/zoomFactor, y: offset.y/zoomFactor, width: radius*2/zoomFactor, height: radius*2/zoomFactor)
+		let croppedImage = CGImageCreateWithImageInRect(image, r)
+		
+		
 		let rect = CGRect(x: offset.x, y: offset.y, width: radius*2, height: radius*2)
 		let _view = scrollView.resizableSnapshotViewFromRect(rect, afterScreenUpdates: true, withCapInsets: UIEdgeInsetsZero)
-		performSegueWithIdentifier("hi", sender: _view)
+		performSegueWithIdentifier("hi", sender: UIImage(CGImage: croppedImage!))
 	}
 	
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		if let v = sender as? UIView {
 			let vc = segue.destinationViewController as! SecondViewController
 			vc.hey = v
+		} else if let im = sender as? UIImage {
+			let vc = segue.destinationViewController as! SecondViewController
+			vc.image = im
 		}
 	}
 	
