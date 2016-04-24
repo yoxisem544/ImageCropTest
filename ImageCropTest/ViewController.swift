@@ -13,7 +13,9 @@ class ViewController: UIViewController {
 	var scrollView: UIScrollView!
 	var imageView: UIImageView!
 
-	let radius: CGFloat = UIScreen.mainScreen().bounds.width / 2
+	let radius: CGFloat = UIScreen.mainScreen().bounds.width / 2 * 0.8
+	
+	let button = UIButton(type: UIButtonType.System)
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -28,7 +30,7 @@ class ViewController: UIViewController {
 		imageView.image = UIImage(named: "a2.png")
 		imageView.contentMode = .ScaleAspectFill
 		imageView.sizeToFit()
-		print(imageView.frame)
+		
 		scrollView.contentSize = imageView.frame.size
 		scrollView.addSubview(imageView)
 		
@@ -38,11 +40,49 @@ class ViewController: UIViewController {
 		scrollView.clipsToBounds = false
 		
 		scrollView.delegate = self
-		print(UIScreen.mainScreen().bounds)
+		
 		// move to center of the image
 		scrollView.contentOffset = CGPoint(x: (imageView.bounds.size.width - scrollView.bounds.size.width) / 2, y: (imageView.bounds.size.height - scrollView.bounds.size.height) / 2)
 		
 		view.layer.addSublayer(holeLayer(radius))
+		
+		titleOnCircle("Move and scale")
+		
+		button.frame = CGRect(x: 0, y: 0, width: 150, height: 60)
+		button.center = CGPoint(x: UIScreen.mainScreen().bounds.width * 0.9, y: UIScreen.mainScreen().bounds.height * 0.9)
+		button.setTitle("幹", forState: UIControlState.Normal)
+		button.addTarget(self, action: #selector(fuck), forControlEvents: UIControlEvents.TouchUpInside)
+		view.addSubview(button)
+	}
+	
+	func fuck() {
+		let offset = scrollView.contentOffset
+		let rect = CGRect(x: offset.x, y: offset.y, width: radius*2, height: radius*2)
+		let _view = scrollView.resizableSnapshotViewFromRect(rect, afterScreenUpdates: true, withCapInsets: UIEdgeInsetsZero)
+		performSegueWithIdentifier("hi", sender: _view)
+	}
+	
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		if let v = sender as? UIView {
+			let vc = segue.destinationViewController as! SecondViewController
+			vc.hey = v
+		}
+	}
+	
+	func titleOnCircle(text: String?) {
+		let title = UILabel()
+		title.frame.size.width = UIScreen.mainScreen().bounds.size.width - 40
+		title.textAlignment = .Center
+		title.textColor = UIColor.whiteColor()
+		title.text = text
+		title.font = UIFont.systemFontOfSize(30)
+		title.sizeToFit()
+		
+		title.center.x = view.center.x
+		let margin: CGFloat = 40
+		title.frame.origin.y = UIScreen.mainScreen().bounds.size.height / 2 - radius - margin
+		
+		view.addSubview(title)
 	}
 	
 	func getMinimunZoomScale() -> CGFloat {
